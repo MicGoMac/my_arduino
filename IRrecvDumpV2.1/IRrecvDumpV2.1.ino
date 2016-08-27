@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 // Include the IRremote library header
 //
-#include <IRremote.h>
+#include "IRremote.h"
 
 //------------------------------------------------------------------------------
 // Tell IRremote which Arduino pin is connected to the IR Receiver (TSOP4838)
@@ -18,7 +18,7 @@ void  setup ( )
   irrecv.enableIRIn();  // Start the receiver
   pinMode(13, OUTPUT);
    digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);              // wait for a second
+  delay(1000);                                                                    // wait for a second
   digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
   delay(1000);              // wait for a second
 }

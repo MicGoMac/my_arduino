@@ -53,6 +53,7 @@ void loop(){
     currentMillis = micros();
 
     //put all pins to zero to save energy and heat. 1100 millsec push time is just made to make the stepper turn
+    //if delayMillis <= 1100 this if check never valid
     if(delayMillis > 1100 and currentMillis-last_time > 1100 and idleState==false){
       allzero();
       idleState=true;
@@ -62,32 +63,34 @@ void loop(){
     //trigger once pass the check point instead of = 
     if(currentMillis-last_time > delayMillis){
 
-      if ( Direction ){
-    	  stepnum++;
-        if ( stepnum >= 8){stepnum=0;}
-      }else{
-        stepnum--;
-        if ( stepnum <= 0){stepnum=8;}
-      }
+      //make this a function
+        if ( Direction ){
+      	  stepnum++;
+          if ( stepnum >= 8){stepnum=0;}
+        }else{
+          stepnum--;
+          if ( stepnum <= 0){stepnum=8;}
+        }
+        
+      	String p1= spstr( 1 );
+      	String p2= spstr( 2 );
+      	String p3= spstr( 3 );
+      	String p4= spstr( 4 );
+      	
+      	////Serial.println (stepnum);
+      	//Serial.println (p1);
+      	//Serial.println ( "p4-" + p4);
+      	////Serial.println (p1+p2+p3+p4);
+      	
+      	digitalWrite(IN1, p1.toInt() ); 
+      	digitalWrite(IN2, p2.toInt() );
+      	digitalWrite(IN3, p3.toInt() );
+      	digitalWrite(IN4, p4.toInt() );
+       
+        idleState=false;
+        steps_left--;
+      //end make this a function
       
-    	String p1= spstr( 1 );
-    	String p2= spstr( 2 );
-    	String p3= spstr( 3 );
-    	String p4= spstr( 4 );
-    	
-    	////Serial.println (stepnum);
-    	//Serial.println (p1);
-    	//Serial.println ( "p4-" + p4);
-    	////Serial.println (p1+p2+p3+p4);
-    	
-    	digitalWrite(IN1, p1.toInt() ); 
-    	digitalWrite(IN2, p2.toInt() );
-    	digitalWrite(IN3, p3.toInt() );
-    	digitalWrite(IN4, p4.toInt() );
-     
-      idleState=false;
-      steps_left--;
-
      //after all job done, reset last_time
      //set it as an increment of delayMillis
      last_time = last_time + delayMillis;
@@ -126,6 +129,34 @@ void allzero(){
   digitalWrite(IN2, 0);
   digitalWrite(IN3, 0);
   digitalWrite(IN4, 0);
+}
+
+void gotoAngle(float ang){
+  //steps_left number of the destinate ang
+  int destinate_step = ang/360 * 4069;
+
+  //choose a fast direction
+  whichDir(  destinate_step);
+
+  while(destinate_step!=steps_left){
+
+    delay(1000)
+    }
+  return;
+}
+
+int whichDir(int destinate_step){
+  //make out if the difference from curr position is greater that 180 degree
+  //once over, go the 'backward' direction
+  boolean overhalf = abs(destinate_step-steps_left) > 4069/2;
+  
+  int dir;
+  if ( destinate_step>steps_left ) { 
+    if ( overhalf ) {  dir = -1; } else { dir = 1;}
+  }else{ 
+    if ( overhalf ) { dir = 1;  } else { dir = -1;}
+  }
+  return dir;
 }
 
 /* note
