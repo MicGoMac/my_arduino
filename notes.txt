@@ -1,0 +1,6 @@
+2023-07-24 
+	staled for some time, try to organise this
+	and use it more.
+
+	on mac mini this is a new clone from github
+	
