@@ -3,4 +3,6 @@
 	and use it more.
 
 	on mac mini this is a new clone from github
-	
+
+2023-07-27
+	on Lenovo chrombook clone and begin working there 	

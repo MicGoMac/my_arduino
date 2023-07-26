@@ -1,4 +1,8 @@
 /*
+
+runs forward and backward in const speed
+seems not quite finished project
+
  http://www.bajdi.com
  L9110 motor driver controlling 2 small DC motors 
  */
