@@ -11,8 +11,8 @@ there are gears between the stepper and the table, some additional calculation
 is expected
 
 gear number of stepper shank:
-gear number of intermediate gear:
-gear number of a full round of the table:
+gear number of intermediate gear: ,64
+gear number of a full round of the table:210, 110
 number of turns of stepper to cause a full round of the table:
 
 stepper 4 pins color code white, yellow green blue
