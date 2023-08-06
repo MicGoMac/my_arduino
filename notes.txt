@@ -6,3 +6,12 @@
 
 2023-07-27
 	on Lenovo chrombook clone and begin working there 	
+
+2023-08-01
+	begin new stepper project for photo turn table:
+	stepper_motor_for_turning_table
+
+
+Note:
+_9100_motor* series controls H bridge to control speed of motor
+
