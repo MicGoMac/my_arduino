@@ -155,9 +155,9 @@ void gotoAngle(float ang){
 
   while(destinate_step!=steps_left){
 
-    delay(1000)
+    delay(1000);
     }
-  return;
+  return 1;
 }
 
 int whichDir(int destinate_step){
