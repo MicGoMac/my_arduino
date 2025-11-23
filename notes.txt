@@ -15,3 +15,6 @@
 Note:
 _9100_motor* series controls H bridge to control speed of motor
 
+2025-11-24
+    took a look here, found it stale for another years.
+    plan to do a timer for rice cooker and toast oven
